@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ScrapyMark</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 18px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #555;
+      font-size: 14px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button.secondary {
+      background-color: #2196F3;
+    }
+    button.secondary:hover {
+      background-color: #0b7dda;
+    }
+    button.danger {
+      background-color: #f44336;
+    }
+    button.danger:hover {
+      background-color: #da190b;
+    }
+    .mode-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .mode-buttons button {
+      flex: 1;
+      margin-top: 0;
+    }
+    #itemFields, #startUrls, #linkRules, #parseFields {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 8px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    .field-item, .url-item, .rule-item, .parse-item {
+      background-color: white;
+      padding: 8px;
+      margin-bottom: 5px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .remove-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 3px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    .status {
+      padding: 8px;
+      background-color: #e7f3ff;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #0066cc;
+    }
+    .empty-state {
+      color: #999;
+      font-size: 12px;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>ScrapyMark Spider Builder</h2>
+  
+  <div class="section">
+    <div class="section-title">Spider Name</div>
+    <input type="text" id="spiderName" placeholder="e.g., my_spider">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Item Definition</div>
+    <input type="text" id="itemName" placeholder="Item name (e.g., ProductItem)">
+    <button id="addFieldBtn">Add Field</button>
+    <div id="itemFields">
+      <div class="empty-state">No fields added yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Start URLs</div>
+    <input type="text" id="startUrl" placeholder="Enter URL">
+    <button id="addUrlBtn">Add URL</button>
+    <div id="startUrls">
+      <div class="empty-state">No URLs added yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Selection Mode</div>
+    <div class="mode-buttons">
+      <button id="selectLinkBtn" class="secondary">Select Links to Follow</button>
+      <button id="selectItemBtn" class="secondary">Select Item Fields</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Link Extractor Rules</div>
+    <div id="linkRules">
+      <div class="empty-state">No link rules added yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Parse Item Fields</div>
+    <div id="parseFields">
+      <div class="empty-state">No parse fields added yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <button id="generateBtn">Generate Spider Code</button>
+    <button id="clearBtn" class="danger">Clear All</button>
+  </div>
+
+  <div id="status" class="status" style="display: none;"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
