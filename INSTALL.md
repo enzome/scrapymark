@@ -11,9 +11,11 @@
 
 1. **Download the Extension**
    ```bash
-   git clone https://github.com/enzome/scrapymark.git
+   git clone https://github.com/USERNAME/scrapymark.git
    cd scrapymark
    ```
+   
+   Or download the ZIP from the repository and extract it.
 
 2. **Open Extensions Page**
    - Chrome: Navigate to `chrome://extensions/`

@@ -112,9 +112,11 @@ scrapymark/
 │   └── test-page.html     # Test HTML page
 ├── README.md              # Main documentation
 ├── QUICKSTART.md          # Quick start guide
+├── INSTALL.md             # Installation guide
 ├── TESTING.md             # Testing guide
 ├── ARCHITECTURE.md        # Technical documentation
-└── FEATURES.md            # Feature descriptions
+├── FEATURES.md            # Feature descriptions
+└── IMPLEMENTATION.md      # Implementation summary
 ```
 
 ## Code Quality
@@ -246,9 +248,9 @@ See LICENSE file
 
 ## Repository Stats
 - Total Files: 17 code/config files
-- Total Documentation: 5 markdown files
-- Total Lines of Code: ~600 lines JavaScript, ~30 lines Python (example)
-- Documentation: ~900 lines
+- Total Documentation: 7 markdown files
+- Total Lines of Code: ~646 lines JavaScript, ~30 lines Python (example)
+- Documentation: ~1,400 lines
 
 ---
 
