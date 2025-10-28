@@ -9,6 +9,7 @@ Browser extension that builds Scrapy spider configurations to extract structured
 - **Item Definition**: Define your Scrapy Items with custom fields
 - **Link Extraction Rules**: Select which links the spider should follow
 - **Parse Item Configuration**: Map DOM elements to item fields
+- **Multiple Output Formats**: Choose between JSON, CSV, or POST to webhook
 - **Code Generation**: Automatically generate production-ready Scrapy spider code
 
 ## Installation
@@ -60,18 +61,38 @@ Browser extension that builds Scrapy spider configurations to extract structured
 5. Right-click or press ESC when finished
 6. The extension will map these elements to your item fields
 
-### 6. Generate Spider Code
+### 6. Choose Output Format
+
+1. Select your desired output format:
+   - **JSON**: Standard JSON output file
+   - **CSV**: CSV format for spreadsheet compatibility
+   - **POST to Webhook**: Automatically POST each scraped item to a webhook endpoint
+2. If you select webhook, enter your webhook URL (e.g., `https://example.com/webhook`)
+
+### 7. Generate Spider Code
 
 1. Review your configuration in the popup
 2. Click **Generate Spider Code**
 3. A Python file will be downloaded with your complete Scrapy spider
 
-### 7. Use Your Spider
+### 8. Use Your Spider
 
 Place the generated Python file in your Scrapy project's `spiders` directory and run:
 
+**For JSON output:**
 ```bash
-scrapy crawl my_spider -o output.json
+scrapy runspider my_spider.py -o output.json
+```
+
+**For CSV output:**
+```bash
+scrapy runspider my_spider.py -o output.csv
+```
+
+**For Webhook output:**
+```bash
+scrapy runspider my_spider.py
+# Items are automatically POSTed to your webhook URL
 ```
 
 ## Generated Code Structure
@@ -82,6 +103,9 @@ The extension generates a complete Scrapy CrawlSpider with:
 - **Spider Class**: CrawlSpider with configured start URLs
 - **Link Extraction Rules**: Rules based on selected DOM elements
 - **Parse Method**: Item parsing logic with CSS/XPath selectors
+- **Output Configuration**: Based on your selected format:
+  - **JSON/CSV**: Usage instructions in code comments
+  - **Webhook**: Custom pipeline class to POST items to your endpoint
 
 ## Example
 
