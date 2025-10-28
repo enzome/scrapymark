@@ -122,6 +122,10 @@ function processSelectedElements() {
     return;
   }
   
+  // Capture selectedElements and selectionMode before async operation
+  const elementsToProcess = selectedElements.slice();
+  const currentMode = selectionMode;
+  
   chrome.storage.local.get(['spiderConfig'], (result) => {
     let config = result.spiderConfig || {
       spiderName: '',
@@ -132,10 +136,10 @@ function processSelectedElements() {
       parseFields: []
     };
     
-    selectedElements.forEach(element => {
+    elementsToProcess.forEach(element => {
       const selector = getOptimalSelector(element);
       
-      if (selectionMode === 'link') {
+      if (currentMode === 'link') {
         // Add link rule
         const rule = {
           selector: selector,
@@ -146,7 +150,7 @@ function processSelectedElements() {
         if (!config.linkRules.some(r => r.selector === rule.selector)) {
           config.linkRules.push(rule);
         }
-      } else if (selectionMode === 'item') {
+      } else if (currentMode === 'item') {
         // Ask for field name
         const fieldName = prompt('Enter field name for this element:', getDefaultFieldName(element));
         
@@ -172,7 +176,7 @@ function processSelectedElements() {
     
     // Save updated config
     chrome.storage.local.set({ spiderConfig: config }, () => {
-      showNotification(`Added ${selectedElements.length} ${selectionMode === 'link' ? 'link rule(s)' : 'parse field(s)'}`, 2000);
+      showNotification(`Added ${elementsToProcess.length} ${currentMode === 'link' ? 'link rule(s)' : 'parse field(s)'}`, 2000);
       
       // Notify popup to update
       chrome.runtime.sendMessage({ action: 'updateConfig' });
