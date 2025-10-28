@@ -112,7 +112,23 @@ The extension automatically generates optimal CSS selectors:
 
 ---
 
-### 8. Export Functionality
+### 8. Output Format Selection
+
+**Format Options:**
+- JSON output (default)
+- CSV output for spreadsheets
+- POST to webhook endpoint
+
+**Webhook Features:**
+- Custom webhook URL input
+- Automatic item POSTing
+- Built-in pipeline generation
+- Error handling and logging
+- Item count tracking
+
+---
+
+### 9. Export Functionality
 
 **Download Options:**
 - Python spider file (.py)
@@ -121,6 +137,8 @@ The extension automatically generates optimal CSS selectors:
 
 **File Content:**
 - Complete spider code
+- Output format configuration
+- Usage instructions
 - Ready to use
 - Copy to Scrapy project
 - Run immediately
