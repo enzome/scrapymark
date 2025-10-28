@@ -13,7 +13,6 @@ class ProductItem(scrapy.Item):
     rating = scrapy.Field()
 
 
-
 class WebhookPipeline:
     """Pipeline to POST scraped items to a webhook endpoint"""
     
@@ -85,9 +84,9 @@ class ProductsSpider(CrawlSpider):
 
 # Usage instructions:
 # Run the spider with webhook output:
-# scrapy runspider products_spider.py
+# scrapy runspider webhook_spider.py
 # 
 # Note: Items will be automatically POSTed to: https://webhook.site/unique-id
 # Each item is sent as a JSON object via HTTP POST request.
 # You can also save to file simultaneously:
-# scrapy runspider products_spider.py -o output.json
+# scrapy runspider webhook_spider.py -o output.json
