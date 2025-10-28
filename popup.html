@@ -159,6 +159,27 @@
   </div>
 
   <div class="section">
+    <div class="section-title">Output Format</div>
+    <div style="padding: 10px; background-color: #f9f9f9; border-radius: 4px;">
+      <label style="display: block; margin-bottom: 8px; cursor: pointer;">
+        <input type="radio" name="outputFormat" value="json" checked>
+        <span style="margin-left: 5px;">JSON</span>
+      </label>
+      <label style="display: block; margin-bottom: 8px; cursor: pointer;">
+        <input type="radio" name="outputFormat" value="csv">
+        <span style="margin-left: 5px;">CSV</span>
+      </label>
+      <label style="display: block; margin-bottom: 8px; cursor: pointer;">
+        <input type="radio" name="outputFormat" value="webhook">
+        <span style="margin-left: 5px;">POST to Webhook</span>
+      </label>
+      <div id="webhookUrlContainer" style="display: none; margin-top: 10px;">
+        <input type="text" id="webhookUrl" placeholder="Enter webhook URL (e.g., https://example.com/webhook)">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <button id="generateBtn">Generate Spider Code</button>
     <button id="clearBtn" class="danger">Clear All</button>
   </div>
